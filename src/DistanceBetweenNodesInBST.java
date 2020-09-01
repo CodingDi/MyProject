@@ -1,8 +1,15 @@
 public class DistanceBetweenNodesInBST {
-    public static void main(String[] args) {
-        int[] nums1 = new int[]{8,5,1,7,10,12};
-        System.out.println(bstDistance(nums1, 8, 8));
-    }
+
+    /*
+    * Time complexity: O(n * h), where n is the number of nodes and h is the height of the tree.
+    * In the worst case tree is not balanced (elements are already in sorted order) and
+    * complexity will be O(n^2).
+    * Space complexity: O(n).
+    * */
+//    public static void main(String[] args) {
+//        int[] nums1 = new int[]{8,5,1,7,10,12};
+//        System.out.println(bstDistance(nums1, 8, 8));
+//    }
     public static int bstDistance(int[] nums, int node1, int node2) {
         TreeNode root = construct(nums, node1, node2);
         if (root == null) return -1;

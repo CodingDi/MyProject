@@ -23,47 +23,50 @@ public class TopKReviews {
     "anacell" is occuring in 2 different reviews and "betacellular" is only occuring in 1 review.
     * */
 
-    public static void main(String[] args) {
-        String[] reviews = new String[]{"Anacell provides the best services in the city",
-                "betacellular has awesome services",
-                "Best services provided by anacell, everyone should use anacell",};
+//    public static void main(String[] args) {
+//
+//        //topKelements
+//        String[] reviews = new String[]{"Anacell provides the best services in the city",
+//                "betacellular has awesome services",
+//                "Best services provided by anacell, everyone should use anacell",};
+//
+//        String[] keywords = new String[]{"anacell", "cetracular", "betacellular", "deltacellular"};
+//        String[] res = topK(reviews, keywords, 2);
+//        String[] reviews2 = new String[]{
+//                //d  d  a  d  b c a b d d c
+//                "deltacellular",
+//                "deltacellular  ll ",
+//                "I love Anacell Best services; Best services provided by anAcell",
+//                "deltacellular provides much better services than betacellular",
+//                "cetracular is worse than anacell",
+//                "Betacellular is better than deltacellular",
+//                "deltacellular lll cetracular"
+//
+//        };
+//        String[] keyword2 = new String[]{"anacell", "betacellular", "cetracular", "deltacellular", "eurocell"};
+//        String[] res2 = topK(reviews2, keywords, 2);
+////        for(int i = 0; i < res.length; i++) {
+////            System.out.println(res[i]);
+////        }
+////        System.out.println(Arrays.toString(res));
+//        System.out.println(Arrays.toString(res2));
+//
+//    }
 
-        String[] keywords = new String[]{"anacell", "cetracular", "betacellular", "deltacellular"};
-        String[] res = topK(reviews, keywords, 2);
-        String[] reviews2 = new String[]{
-                //d  d  a  d  b c a b d d c
-                "deltacellular",
-                "deltacellular  ll ",
-                "I love Anacell Best services; Best services provided by anAcell",
-                "deltacellular provides much better services than betacellular",
-                "cetracular is worse than anacell",
-                "Betacellular is better than deltacellular",
-                "deltacellular lll cetracular"
-
-        };
-        String[] keyword2 = new String[]{"anacell", "betacellular", "cetracular", "deltacellular", "eurocell"};
-        String[] res2 = topK(reviews2, keywords, 2);
-//        for(int i = 0; i < res.length; i++) {
-//            System.out.println(res[i]);
-//        }
-//        System.out.println(Arrays.toString(res));
-        System.out.println(Arrays.toString(res2));
-
-    }
-    public static String[] topK(String[] reviews, String[] keywords, int k){
+    public String[] topK(String[] reviews, String[] keywords, int k) {
 
         //construct a map with its corresponding occurences, allinitialized as 0
         Map<String, Integer> map = new HashMap<>();
-        for(int i = 0; i < keywords.length; i++){
+        for (int i = 0; i < keywords.length; i++) {
             map.put(keywords[i], 0);
         }
         //split each review into words
-        for(String str: reviews) {
+        for (String str : reviews) {
             Set<String> used = new HashSet<>();
             String[] review = str.split("\\W");
-            for(String word : review) {
+            for (String word : review) {
                 word = word.toLowerCase();
-                if(map.containsKey(word) && !used.contains(word)) {
+                if (map.containsKey(word) && !used.contains(word)) {
                     map.put(word, map.get(word) + 1);
                     used.add(word);//marked as used
                 }
@@ -73,11 +76,11 @@ public class TopKReviews {
         //now every keyword with its occurrences are in the map
         //we will sort and output it by its occurrence
         PriorityQueue<String> minHeap = new PriorityQueue<>((s1, s2) -> (map.get(s1) == map.get(s2) ? s2.compareTo(s1) : map.get(s1) - map.get(s2)));
-        for(String keyword: map.keySet()) {
+        for (String keyword : map.keySet()) {
             keyword = keyword.toLowerCase();
-            if(minHeap.size() < k){
+            if (minHeap.size() < k) {
                 minHeap.offer(keyword);
-            }else if(map.get(minHeap.peek()) < map.get(keyword)){
+            } else if (map.get(minHeap.peek()) < map.get(keyword)) {
                 minHeap.poll();
                 minHeap.offer(keyword);
             }
@@ -86,15 +89,11 @@ public class TopKReviews {
         //output
         String[] res = new String[minHeap.size()];
         int end = 0;
-        while(!minHeap.isEmpty()) {
+        while (!minHeap.isEmpty()) {
             res[end++] = minHeap.poll();
         }
 
         return res;
     }
-
-//    @Override
-//    public void toString() {
-//
-//    }
 }
+

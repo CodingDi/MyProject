@@ -2,28 +2,28 @@ import java.util.*;
 
 public class ZombieInMatrix {
 
-    public static void main(String[] args) {
-        //ZoombieInMatrix
-        List<List<Integer>> grid = new ArrayList<>();
-        List<Integer> r1 = new ArrayList<>(Arrays.asList(0, 1, 1, 0, 1));
-        List<Integer> r2 = new ArrayList<>(Arrays.asList(0, 1, 0, 1, 0));
-        List<Integer> r3 = new ArrayList<>(Arrays.asList(0, 0, 0, 0, 1));
-        List<Integer> r4 = new ArrayList<>(Arrays.asList(0, 1, 0, 0, 0));
-        grid.add(r1);
-        grid.add(r2);
-        grid.add(r3);
-        grid.add(r4);
-        ZombieInMatrix t1 = new ZombieInMatrix();
-
-        System.out.println(t1.minHours(4, 5, grid));
-    }
+//    public static void main(String[] args) {
+//        //ZoombieInMatrix
+//        List<List<Integer>> grid = new ArrayList<>();
+//        List<Integer> r1 = new ArrayList<>(Arrays.asList(0, 1, 1, 0, 1));
+//        List<Integer> r2 = new ArrayList<>(Arrays.asList(0, 1, 0, 1, 0));
+//        List<Integer> r3 = new ArrayList<>(Arrays.asList(0, 0, 0, 0, 1));
+//        List<Integer> r4 = new ArrayList<>(Arrays.asList(0, 1, 0, 0, 0));
+//        grid.add(r1);
+//        grid.add(r2);
+//        grid.add(r3);
+//        grid.add(r4);
+//        ZombieInMatrix t1 = new ZombieInMatrix();
+//
+//        System.out.println(t1.minHours(4, 5, grid));
+//    }
     /**
      * Given a 2D grid, each cell is either a zombie 1 or a human 0.
      * Zombies can turn adjacent (up/down/left/right) human beings into zombies every hour.
      * Find out how many hours does it take to infect all humans?
      */
 
-    private static int minHours(int rows, int columns, List<List<Integer>> grid) {
+    private int minHours(int rows, int columns, List<List<Integer>> grid) {
         if(grid == null || grid.size() == 0) return 0;
         int[][] matrix = new int[rows][columns];
         Queue<int[]> queue = new LinkedList<>();

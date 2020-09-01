@@ -2,6 +2,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PartitionLabels {
+
+    /*Time Complexity: O(N) O(N), where NN is the length of SS.
+    Space Complexity: O(1) O(1) to keep data structure last of not more than 26 characters.
+    *
+    * */
         public List<Integer> partitionLabels(String S) {
 
             List<Integer> res = new ArrayList<>();
