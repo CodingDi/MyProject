@@ -1,3 +1,5 @@
+import Amazon.TreeNode;
+
 public class ValidateBinarySearchTree {
 
     //time:O(n) space:O(n)  recrusion way

@@ -1,3 +1,5 @@
+package Amazon;
+
 // "static void main" must be defined in a public class.
 public class FindFruitCombs {
     public static void main(String[] args) {

@@ -1,3 +1,5 @@
+package Amazon;
+
 import java.util.*;
 public class CriticalRouter {
 

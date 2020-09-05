@@ -1,4 +1,4 @@
-// "static void main" must be defined in a public class.
+package Amazon;// "static void main" must be defined in a public class.
 
 import java.util.LinkedList;
 import java.util.Queue;

@@ -1,3 +1,5 @@
+package Amazon;
+
 public class DistanceBetweenNodesInBST {
 
     /*
