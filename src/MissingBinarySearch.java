@@ -23,6 +23,8 @@ public class MissingBinarySearch {
         if(arr[right] != right + 1){
             return right + 1;
         }
-        return right + 2;
+        return right + 2;//!!!IMPORTANT
+        //0 1 2
+        //1 2 3   ->return 4
     }
 }
