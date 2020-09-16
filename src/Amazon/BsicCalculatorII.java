@@ -4,58 +4,57 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 
 public class BsicCalculatorII {
-        public int calculate(String s) {
 
-            if(s == null){
+        public int calculate(String s) {
+            if(s == null || s.length() == 0){
                 return 0;
             }
 
+            int tmp = 0;
+            char sign = '+';
             Deque<Integer> stack = new ArrayDeque<>();
 
-            char sign = '+';
-            int num = 0;
             for(int i = 0; i < s.length(); i++){
                 char cur = s.charAt(i);
-
-                //case1. if cur is a digit
+                //1. deal with the digits
                 if(Character.isDigit(cur)){
-                    num = num*10 + cur - '0';
+                    int num = cur - '0';
+                    while(i + 1 < s.length() && Character.isDigit(s.charAt(i + 1))){
+                        num = num*10 + s.charAt(i + 1) - '0';
+                        i++;//avoid deap loop!!
+                    }
+                    tmp = num;
                 }
 
-                //case2. if cur is a sign
+                //2. deal with then operands and the last character
                 if(cur != ' ' && !Character.isDigit(cur) || i == s.length() - 1){
                     if(sign == '+'){
-
-                        stack.offerFirst(num);
+                        stack.offerFirst(tmp);
 
                     }else if(sign == '-'){
-
-                        stack.offerFirst(-num);
+                        stack.offerFirst(-tmp);
 
                     }else if(sign == '*'){
+                        stack.offerFirst(stack.pollFirst()*tmp);
 
-                        stack.offerFirst(stack.pollFirst() * num);
-
-                    }else{
-
-                        stack.offerFirst(stack.pollFirst()/num);
+                    }else if(sign == '/'){
+                        stack.offerFirst(stack.pollFirst()/tmp);
 
                     }
-                    num = 0;//reset the number
-                    sign = cur;//update the sign at the end
-                }
 
+                    sign = cur;//update the sign because we just used the previous sign
+                    tmp = 0;//reset the tmp
+                }
             }
 
-
-
             int res = 0;
+
             while(!stack.isEmpty()){
                 res += stack.pollFirst();
             }
 
-
             return res;
         }
+
 
 }
