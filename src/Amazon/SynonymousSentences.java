@@ -14,7 +14,7 @@ public class SynonymousSentences {
             Map<String, List<String>> graph = new HashMap<>();
             construct(graph, synonyms);
 
-            //store in treeset so that its well ordered
+            //store in TreeSet so that its well ordered
             Set<String> res = new TreeSet<>();
 
             //2. use Queue to do BFS expand
