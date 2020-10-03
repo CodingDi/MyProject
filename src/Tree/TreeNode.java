@@ -1,7 +1,7 @@
 package Tree;
 
 public class TreeNode {
-         public class TreeNode {
+
          int val;
          TreeNode left;
          TreeNode right;
@@ -12,5 +12,5 @@ public class TreeNode {
              this.left = left;
              this.right = right;
          }
-     }
+
 }
